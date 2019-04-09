@@ -1,0 +1,68 @@
+<html>
+<head>
+	<title>You&Me</title>
+	<link rel= "stylesheet" type = "text/css" href = "style1.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>  
+</head>
+
+<body>
+
+
+<style>
+body {
+    width: 100%;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    position: relative;
+}
+
+img {
+    width:100%;
+    height: auto;
+}
+/*#container {
+    margin: 0px auto;
+    width: 500px;
+    height: 375px;*/
+}
+#videoElement {
+    width: 100%;
+    min-height: auto;
+    background-color: #666;
+    position: absolute;
+    z-index: 1;
+}
+
+#overtop {
+    position: absolute;
+    z-index: 99;
+}
+</style>
+</head>
+  
+<body>
+<div id="overtop">
+
+    <img src="9.gif" autoplay>
+  </div>
+<div id="container">
+    <video id="videoElement" width="100%" height="auto" autoplay>
+     
+    </video>
+</div>
+<script>
+ var video = document.querySelector("#videoElement");
+ 
+if (navigator.mediaDevices.getUserMedia) {       
+    navigator.mediaDevices.getUserMedia({video: true})
+  .then(function(stream) {
+    video.srcObject = stream;
+  })
+  .catch(function(err0r) {
+    console.log("Something went wrong!");
+  });
+}
+</script>
+</body>
+</html>
